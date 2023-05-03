@@ -1,0 +1,878 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+@import 'libs';
+@import 'global';
+
+/*переменыне*/
+.color-white {
+    color: #ffffff;
+}
+
+.bg-gray {
+    background: #F5F5F5;
+}
+/*бургеры*/
+.burger{
+    
+    display: none;
+    position: relative;
+    z-index: 50;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30px;
+    height: 18px;
+}
+
+.burger span{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 80%;
+    transform: scale(1);
+    background-color: $main-black;
+}
+
+.burger::before, .burger::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: $main-black;
+    transition: all 0.3s ease 0s;
+}
+
+.burger::before { top: 0 }
+
+.burger::after { bottom: 0 }
+
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.burger-active span {    
+     transform: scale(0) }
+
+.burger.burger-active::before{
+    top: 50%;
+    transform: rotate(-45deg) translate(0, -50%);
+    background-color: $main-white;
+}
+
+.burger.burger-active::after{
+    bottom: 50%;
+    transform: rotate(45deg) translate(0, 50%);
+    background-color: $main-white;
+}
+.header {
+    padding: 50px 0px;
+
+    &__logo {
+        font-family: $mush;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 35px;
+        color: $main-black;
+        margin-right: 94px;
+
+        &:hover {
+            color: $main-black;
+        }
+    }
+
+    &__form {
+        border-radius: 30px;
+        height: 46px;
+        padding-left: 56px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: $mush;
+        color: rgba(18, 18, 18, 0.6);
+
+        &::placeholder {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+            font-family: $mush;
+            color: rgba(18, 18, 18, 0.6);
+        }
+    }
+
+    &__search-block {
+        max-width: 435px;
+        width: 100%;
+        position: relative;
+    }
+
+    &__search {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        left: 25px;
+    }
+
+    &__link {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+        color: rgba(18, 18, 18, 0.6);
+
+        &:hover {
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            color: rgba(18, 18, 18, 0.6);
+        }
+    }
+
+    &__title {
+        @extend %title;
+        font-size: 60px;
+        line-height: 104px;
+        position: relative;
+    }
+
+    &__light-icon {
+        display: none;
+        position: absolute;
+        right: 365px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &__btn {
+        border-radius: 30px;
+        background-color: $main-black;
+        transition: all .3s ease;
+        &:hover {
+            background-color: $main-white;
+            border: 1px solid $main-black;
+            box-shadow: 0px 15px 30px -9px rgba(18, 18, 18, 0.36);
+        }
+
+        &-link {
+            padding: 10px 58px;
+            display: block;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            &:hover {
+                color: $main-black;
+            }
+        }
+    }
+
+    &__img {
+        padding: 20px;
+        background: #F5F5F5;
+        border-radius: 10px;
+    }
+    &__burgerLogo{
+        display: none;
+    }
+
+}
+
+.artists {  
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    &__img {
+        border: 5px solid $main-white;
+        border-radius: 50%;
+
+        &-1 {
+            margin-left: -45px;
+            z-index: 4;
+        }
+
+        &-2 {
+            margin-left: -45px;
+            z-index: 6;
+        }
+
+        &-3 {
+            margin-left: -45px;
+            z-index: 8;
+        }
+
+        &-4 {
+            margin-left: -45px;
+            z-index: 10;
+        }
+    }
+
+    &__numb {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px
+    }
+
+    &__numb-text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        color: rgba(18, 18, 18, 0.4);
+    }
+}
+
+.main {
+    padding: 100px 0px;
+
+    &__title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__icon {
+        width: 80px;
+        height: 80px;
+        margin-top: -10px;
+    }
+
+    &__btn {
+        display: none;
+        border-radius: 55px;
+        background-color: $main-black;
+        transition: all .3s ease;
+        &:hover {
+            border: 1px solid $main-black;
+            background-color: $main-white;
+            box-shadow: 0px 20px 40px -7px rgba(18, 18, 18, 0.4);
+        }
+    }
+
+    &__item-block {
+        border-radius: 6px;
+
+        &-1 {
+            &:hover {
+                .main__btn-1 {
+                    animation: fadeBlockAnimation 1s ease-in-out;
+                    display: block;
+                }
+
+                .main__img-1 {
+                    transition: all 1s ease;
+                    height: 210px;
+                }
+            }
+        }
+
+        &-2 {
+            .main__btn-2 {
+                animation: fadeBlockAnimation 1s ease-in-out;
+                display: block;
+            }
+
+            .main__img-2 {
+                transition: all 1s ease;
+                height: 210px;
+            }
+        }
+
+        &-3 {
+            &:hover {
+                .main__btn-3 {
+                    animation: fadeBlockAnimation 1s ease-in-out;
+                    display: block;
+                }
+
+                .main__img-3 {
+                    transition: all 1s ease;
+                    height: 210px;
+                }
+            }
+        }
+
+        // &:hover{ 
+        //     .main__btn{
+        //         animation: fadeBlockAnimation 1s ease-in-out;
+        //         display: block;
+        //     }
+        //     .main__img{
+        //         transition: all 1s ease;
+        //         height: 210px;  
+        //     }
+        // }
+    }
+
+    &__img {
+        transition: all 1s ease;
+        height: 257px;
+        width: 384px;
+        border-radius: 6px;
+    }
+
+    &__subtitle {
+        @extend %title;
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    &__avatar {
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+    }
+
+    &__name {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    &__deadlines {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: rgba(18, 18, 18, 0.6)
+    }
+
+    &__info {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px
+    }
+
+    .progress {
+        border-radius: 50px;
+        height: 11px;
+
+        &-bar {
+            background: linear-gradient(90.15deg, #121212 0%, rgba(79, 79, 79, 0.45) 141.67%);
+            border-radius: 50px;
+
+            &__1 {
+                width: 85%;
+            }
+
+            &__2 {
+                width: 75%;
+            }
+
+            &__3 {
+                width: 50%;
+            }
+        }
+    }
+
+    &__link {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+        color: $main-white;
+        padding: 18px 130px;
+        display: block;
+        &:hover {
+            color: $main-black;
+        }
+    }
+}
+
+.list__artists {
+    padding: 100px 0;
+
+    &-title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &-icon {
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+    &-inner {
+        border-radius: 15px;
+    }
+
+    &-img {
+        border-radius: 15px;
+        box-shadow: 0px 30px 60px -15px rgba(18, 18, 18, 0.3);
+        height: 384px;
+        width: 570px;
+    }
+
+    &-avatar {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+
+    &-name {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    &-infoPrice {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &-blockPrice {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    &-moreBlocks {
+        border-radius: 15px;
+    }
+
+    &-price {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    &-anyPrice {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &-avatarBuier {
+        width: 116px;
+        height: 116px;
+        border-radius: 50%;
+    }
+}
+
+.live {
+    padding: 100px 0;
+
+    &__title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__subtitle {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__img {
+        box-shadow: 0px 33px 67px -16px rgba(18, 18, 18, 0.4);
+        border-radius: 15px;
+        height: 524px;
+    }
+
+    &__btn {
+        border-radius: 55px;
+        background-color: $main-black;
+        transition: all .3s ease;
+        &:hover {
+            border-radius: 1px solid $main-black;
+            background-color: $main-white;
+            box-shadow: 0px 20px 40px -7px rgba(18, 18, 18, 0.4);
+        }
+    }
+
+    &__link {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+        color: $main-white;
+        padding: 23px 190px;
+        display: block;
+        transition: all .3s ease;
+        &:hover {
+            color: $main-black;
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &__price,
+    &__time {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    &__avatar {
+        border-radius: 50%;
+    }
+
+    &__thirdInner,
+    &__fothInner {
+        border-radius: 5px;
+    }
+}
+
+.category {
+    padding: 100px 0;
+
+    &__title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__subtitle {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &__buttons {
+        display: flex;
+        border-radius: 80px;
+        gap: 48px;
+    }
+
+    &__button {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        color: rgba(18, 18, 18, 0.6);
+        border: none;
+        background-color: transparent;
+    }
+
+    .mixitup-control-active {
+        background-color: $main-black;
+        border-radius: 50px;
+        padding: 20px 40px;
+        color: $main-white;
+        font-weight: 700;
+    }
+
+    &__item {
+        border-radius: 10px;
+    }
+
+    &__nameBlock {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__text {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+        color: rgba(18, 18, 18, 0.6);
+    }
+
+    &__img {
+        border-radius: 10px 10px 0px 0px;
+        height: 204px;
+    }
+
+    &__avatar {
+        border-radius: 50%;
+        max-width: 54px;
+        height: 38px;
+    }
+
+    &__price {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    &__btn {
+        background-color: transparent;
+        transition: all .3s ease;
+        border-radius: 29px;
+        border: 1px solid rgba(18, 18, 18, 0.4);
+        &:hover{
+            background-color: $main-black;
+        }
+    }
+
+    &__link {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+        color: $main-black;
+        font-family: $mush;
+        padding: 15px 85px;
+        display: block;
+        transition: all .3s ease;
+        &:hover {
+            color: $gray;
+        }
+    }
+
+    &__btnDown {
+        background-color: $main-white;
+        border: 1px solid rgba(18, 18, 18, 0.4);
+        border-radius: 29px;
+        transition: all .3s ease;
+        &:hover{
+            background-color: $main-black;
+        }
+    }
+    &__linkDown{
+        padding: 15px 60px;
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        color: $main-black;
+        transition: all .3s ease;
+        &:hover{
+            color: $main-white;
+        }
+    }
+}
+
+.help {
+    padding: 100px 0;
+
+    &__title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__icon {
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+    &__thirdInner {
+        border-radius: 15px;
+    }
+
+    &__subtitle {
+        @extend %title;
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    &__img {
+        height: 313px;
+        border-radius: 15px;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: rgba(18, 18, 18, 0.6);
+        max-width: 620px;
+    }
+
+    &__textDate {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    &__btnDown {
+        background-color: $main-white;
+        border: 1px solid rgba(18, 18, 18, 0.4);
+        border-radius: 29px;
+        transition: all .3s ease;
+        &:hover{
+            background-color: $main-black;
+        }
+    }
+
+    &__link {
+        padding: 15px 60px;
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        color: $main-black;
+        transition: all .3s ease;
+        &:hover{
+            color: $main-white;
+        }
+    }
+}
+
+.join {
+    padding: 100px 0px;
+
+    &__block {
+        border-radius: 15px;
+    }
+
+    &__title {
+        @extend %title;
+        font-size: 50px;
+        line-height: 68px;
+    }
+
+    &__icon {
+        width: 50px;
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        color: rgba(18, 18, 18, 0.6);
+        max-width: 480px;
+    }
+
+    &__img {
+        box-shadow: 0px 30px 60px -15px rgba(18, 18, 18, 0.4);
+        border-radius: 0px 10px 10px 0px;
+    }
+
+    &__btn {
+        background-color: $main-black;
+        border: 1px solid rgba(18, 18, 18, .4);
+        border-radius: 29px;
+        transition: all .3s ease;
+        &:hover{
+            background-color: $main-white;
+            border: 1px solid rgba(18, 18, 18, .4);
+        }
+    }
+
+    &__link {
+        padding: 15px 60px;
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px; 
+        color: $main-white;
+        transition: all .3s ease;
+        &:hover{
+            color: $main-black;
+        }
+    }
+
+    &__inner {
+        gap: 24px;
+    }
+}
+
+.footer {
+    padding: 60px 0;
+
+    &__logo {
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 35px;
+        color: $main-black;
+
+        &:hover {
+            color: $main-black;
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 30px;
+        max-width: 368px;
+    }
+
+    &__btn {
+        background-color: $main-black;
+        border: 1px solid rgba(18, 18, 18, .4);
+        border-radius: 29px;
+        margin-bottom: 100px;
+        transition: all .3s ease;
+        &:hover{
+            background-color: $main-white;
+            border: 1px solid rgba(18, 18, 18, .4);
+        }
+    }
+
+    &__link {
+        padding: 14px 54px;
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        color: $main-white;
+        transition: all .3s ease;
+        &:hover {
+            color: $main-black;
+        }
+    }
+
+    &__list li a {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: $main-black;
+
+        &:hover {
+            color: $main-black;
+        }
+    }
+
+    &__list li {
+        margin-bottom: 18px;
+    }
+
+    &__subtitle {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    &__endText {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+/*анимации*/
+@keyframes fadeBlockAnimation {
+    0% {
+        display: block;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    30% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@import 'media';
